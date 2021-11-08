@@ -5,3 +5,4 @@ db/
 job_scripts/
 provision/
 cloudsql/
+*.pyc

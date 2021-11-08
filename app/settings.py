@@ -86,15 +86,14 @@ WSGI_APPLICATION = "app.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-LOCAL = os.getenv("IS_LOCAL", False)
-CLOUDSQL_SOCKET = f"{BASE_DIR}/cloudsql" if LOCAL else "/cloudsql"  # TODO Remove this if necessary
-if LOCAL:
+
+if os.getenv("IS_LOCAL", False):
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql_psycopg2",
             "HOST": DATABASE_HOST_IP,
             "NAME": DATABASE_NAME,
-            "DB_USER": DATABASE_USERNAME,
+            "USER": DATABASE_USERNAME,
             "PASSWORD": DATABASE_PASSWORD,
         },
     }
@@ -102,9 +101,9 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql_psycopg2",
-            "HOST": f"{CLOUDSQL_SOCKET}/{GCP_PROJECT_ID}:{GCP_REGION}:{DATABASE_INSTANCE_NAME}",
+            "HOST": f"/cloudsql/{GCP_PROJECT_ID}:{GCP_REGION}:{DATABASE_INSTANCE_NAME}",
             "NAME": DATABASE_NAME,
-            "DB_USER": DATABASE_USERNAME,
+            "USER": DATABASE_USERNAME,
             "PASSWORD": DATABASE_PASSWORD,
         },
     }
