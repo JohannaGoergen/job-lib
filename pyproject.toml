@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "gcp-job-lib"
+version = "0.1.0"
+description = "Runner for Ad-Hoc and Scheduled Jobs on GCP infra"
+authors = ["Johanna Goergen"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^3.2.9"
+python-dotenv = "^0.19.1"
+django-regex-field = "^2.0.2"
+frozendict = "^2.0.7"
+google-api-python-client = "^2.29.0"
+djangorestframework = "^3.12.4"
+requests = "^2.26.0"
+google-cloud-pubsub = "^2.8.0"
+gunicorn = "^20.1.0"
+psycopg2 = "^2.9.1"
+
+[tool.poetry.dev-dependencies]
+black = "^21.10b"
+pre-commit = "^2.15.0"
+click = "^8.0.3"
+google-cloud-storage = "^1.42.3"
+pip = "^21.3.1"
+install = "^1.3.4"
+google-cloud-pubsub = "^2.8.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
